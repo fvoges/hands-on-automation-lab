@@ -21,7 +21,7 @@ This exercise simulates a scenario where infrastructure code is duplicated for s
     terraform init
     ```
 
-4. **Apply the Configuration:** You will be prompted to enter your `vpc_name`. Make sure this VPC exists in the `aws_region` you are using.
+4. **Apply the Configuration:** 
 
     Bash
 
