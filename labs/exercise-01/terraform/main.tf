@@ -2,9 +2,10 @@ resource "random_pet" "prefix" {
   length = 1
 }
 
+
 # --- Instance 1 ---
 resource "aws_security_group" "sg_uno" {
-  name        = "sg_uno_firewall"
+  name        = "${resource.random_pet.prefix.id}_sg_uno_firewall"
   description = "Firewall for instance uno"
   vpc_id      = data.aws_vpc.selected_vpc.id
 
@@ -28,7 +29,7 @@ resource "aws_instance" "instance_uno" {
   vpc_security_group_ids = [aws_security_group.sg_uno.id]
 
   tags = {
-    Name    = "instance_uno_compute"
+    Name    = "${resource.random_pet.prefix.id}_instance_uno_compute"
     Purpose = "GenericCompute"
     ID      = "Uno"
   }
@@ -36,7 +37,7 @@ resource "aws_instance" "instance_uno" {
 
 # --- Instance 2 ---
 resource "aws_security_group" "sg_dos" {
-  name        = "firewall_for_dos_app"
+  name        = "${resource.random_pet.prefix.id}_firewall_for_dos_app"
   description = "Firewall for instance dos"
   vpc_id      = data.aws_vpc.selected_vpc.id
 
@@ -48,7 +49,7 @@ resource "aws_security_group" "sg_dos" {
   }
 
   tags = {
-    Name = "firewall_for_dos_app"
+    Name = "${resource.random_pet.prefix.id}_firewall_for_dos_app"
   }
 }
 
@@ -60,7 +61,7 @@ resource "aws_instance" "instance_dos" {
   vpc_security_group_ids = [aws_security_group.sg_dos.id]
 
   tags = {
-    Name    = "application_server_dos"
+    Name    = "${resource.random_pet.prefix.id}_application_server_dos"
     Purpose = "AppServer"
     ID      = "Dos"
     Version = "1.0"
@@ -69,7 +70,7 @@ resource "aws_instance" "instance_dos" {
 
 # --- Instance 3 ---
 resource "aws_security_group" "sg_tres" {
-  name        = "security_group_tres"
+  name        = "${resource.random_pet.prefix.id}_security_group_tres"
   description = "Security group for instance tres"
   vpc_id      = data.aws_vpc.selected_vpc.id
 
@@ -81,7 +82,7 @@ resource "aws_security_group" "sg_tres" {
   }
 
   tags = {
-    Name = "security_group_tres"
+    Name = "${resource.random_pet.prefix.id}_security_group_tres"
   }
 }
 
@@ -97,7 +98,7 @@ resource "aws_instance" "instance_tres" {
   }
 
   tags = {
-    Name    = "tres_worker_node"
+    Name    = "${resource.random_pet.prefix.id}_tres_worker_node"
     Purpose = "Worker"
     ID      = "Tres"
   }
@@ -105,7 +106,7 @@ resource "aws_instance" "instance_tres" {
 
 # --- Instance 4 ---
 resource "aws_security_group" "sg_quatro" {
-  name        = "quatro_instance_access" # Slightly different naming
+  name        = "${resource.random_pet.prefix.id}_quatro_instance_access" # Slightly different naming
   description = "Access rules for instance quatro"
   vpc_id      = data.aws_vpc.selected_vpc.id
 
@@ -117,7 +118,7 @@ resource "aws_security_group" "sg_quatro" {
   }
 
   tags = {
-    Name = "quatro_instance_access"
+    Name = "${resource.random_pet.prefix.id}_quatro_instance_access"
   }
 }
 
@@ -133,7 +134,7 @@ resource "aws_instance" "instance_quatro" {
               EOF
 
   tags = {
-    Name        = "data_processor_quatro"
+    Name        = "${resource.random_pet.prefix.id}_data_processor_quatro"
     Purpose     = "Processing"
     ID          = "Quatro"
     Criticality = "Medium"
@@ -142,7 +143,7 @@ resource "aws_instance" "instance_quatro" {
 
 # --- Instance 5 ---
 resource "aws_security_group" "sg_cinco" {
-  name        = "cinco-sg-policy" # Different naming convention
+  name        = "${resource.random_pet.prefix.id}_cinco-sg-policy" # Different naming convention
   description = "SG policy for instance cinco"
   vpc_id      = data.aws_vpc.selected_vpc.id
 
@@ -154,7 +155,7 @@ resource "aws_security_group" "sg_cinco" {
   }
 
   tags = {
-    Name = "cinco-sg-policy"
+    Name = "${resource.random_pet.prefix.id}_cinco-sg-policy"
   }
 }
 
@@ -167,7 +168,7 @@ resource "aws_instance" "instance_cinco" {
   disable_api_termination = true
 
   tags = {
-    Name    = "cinco_monitoring_box"
+    Name    = "${resource.random_pet.prefix.id}_cinco_monitoring_box"
     Purpose = "Monitoring"
     ID      = "Cinco"
   }
