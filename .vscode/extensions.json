@@ -1,10 +1,11 @@
 {
   "recommendations": [
-    "hashicorp.terraform",
-    "redhat.vscode-yaml",
     "donjayamanne.git-extension-pack",
-    "yzhang.markdown-all-in-one",
     "esbenp.prettier-vscode",
-    "hashicorp.hcl"
+    "hashicorp.hcl",
+    "hashicorp.terraform",
+    "hd101wyy.markdown-preview-enhanced",
+    "redhat.vscode-yaml",
+    "yzhang.markdown-all-in-one"
   ]
 }
